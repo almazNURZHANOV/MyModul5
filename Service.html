@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <title>О компании</title>
+
+</head>
+<body class="Service">
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <img src="img/596d13617652515d5213b4cd 1.png" alt="Logo">
+                    <li>Happy <br> Animals</li>
+                </a>
+
+                
+                <!-- Navigation -->
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="CareDog.html" class="menu-link">Содержание и уход</a>
+                        <ul class="submenu">
+                            <li><a href="CareDog.html">Собаки</a></li>
+                            <li><a href="CareCat.html">Кошки</a></li>
+                            <li><a href="CareFish.html">Рыбки</a></li>
+                            <li><a href="Proverka.html">Грызуны</a></li>
+                            <li><a href="Proverka.html">Птицы</a></li>
+                            <li><a href="Proverka.html">Ветаптека</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="PetFood.html" class="menu-link">Еда для питомца</a>
+                        <ul class="submenu">
+                            <li><a href="PetFood.html">Собаки</a></li>
+                            <li><a href="CatFood.html">Кошки</a></li>
+                            <li><a href="FishFood.html">Рыбки</a></li>
+                            <li><a href="Proverka.html">Грызуны</a></li>
+                            <li><a href="Proverka.html">Птицы</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="Service.html" class="menu-link">О сервисе</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="https://twitter.com/?lang=ru">Twitter</a></li>
+                            <li><a href="https://www.instagram.com/">Instagram</a></li>
+                            <li><a href="https://mail.ru/">Email</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                
+                <!-- Shop -->
+                <a href="Lab14.html" class="shop">
+                    <img src="img/3081822 1.png" alt="shop">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="about-company">
+            <div class="container">
+                <h1>О компании</h1>
+
+                <h2>Наши преимущества</h2>
+                <ul>
+                    <li>Продаем только качественные зоотовары.</li>
+                    <li>Вся продукция сертифицирована в обязательном порядке.</li>
+                    <li>Постоянно расширяем ассортимент.</li>
+                    <li>Имеем статус ветеринарной аптеки.</li>
+                    <li>Работаем без выходных.</li>
+                </ul>
+                <h2>Наши преимущества</h2>
+                <ul>
+                    <li>Питомец — приоритет. Думаем о пользе, которую приносим питомцам.</li>
+                    <li>Экологичность. Бережно относимся к природе </li>
+                    <li>Инновационность. Применяем IT-технологии, чтобы стать доступнее и ближе к покупателю.</li>
+                    <li>Эффективность. Занимаемся тем, что лучше умеем, используя знания.</li>
+                    <li>Честность. Выполняем обещания и ответственны за решения.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/canon-get-inspired-party-1-1920.jpg" alt="slide1">
+                    <div class="slide-description">
+                        <h1>Наши сотрудники</h1>
+                        <h2>Улучшаем качество жизни питомцев и их владельцев.</h2>
+                    </div>
+                </div>
+                <!-- Добавьте другие слайды по аналогии -->
+                <div class="swiper-slide">
+                    <img src="img/pet-store2.jpeg.webp" alt="slide2">
+                    <div class="slide-description">
+                        <h1>Наш магазин</h1>
+                        <h2>Продаем только качественные зоотовары.</h2>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/121438232.jpg" alt="slide3">
+                    <div class="slide-description">
+                        <h1>Друзья наши меньшие</h1>
+                        <h2>Любите животных.</h2>
+                    </div>
+                </div>
+                <!-- Добавьте другие слайды по аналогии -->
+            </div>
+            
+            <!-- Добавьте стрелки навигации -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </section>
+
+        <!-- График -->
+        <div class="Graf">
+            <h9>График продаж компании за 2023г.</h9>
+            <hr>
+        </div>
+    
+        <section id="chart-container">
+            <canvas id="myChart"></canvas>
+        </section>
+    </main>
+
+    <!-- Таблица -->
+    <div class="Graf">
+        <h9>Таблица достижений компании</h9>
+        <hr>
+    </div>
+    <table class="CompTable">
+        <thead>
+            <tr>
+                <th>Год</th>
+                <th>Достижение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2014</td>
+                <td>Получение сертификата качества</td>
+            </tr>
+            <tr>
+                <td>2014</td>
+                <td>Открытие филиала</td>
+            </tr>
+            <tr>
+                <td>2015</td>
+                <td>Проведение благотворительного мероприятия</td>
+            </tr>
+            <tr>
+                <td>2016</td>
+                <td>Получение премии "Лучший зоомагазин года"</td>
+            </tr>
+            <tr>
+                <td>2018</td>
+                <td>Запуск онлайн-платформы для заказа товаров</td>
+            </tr>
+            <tr>
+                <td>2020</td>
+                <td>Разработка экологически чистых упаковок для товаров</td>
+            </tr>
+            <tr>
+                <td>2021</td>
+                <td>Внедрение программы лояльности для клиентов</td>
+            </tr>
+            <tr>
+                <td>2023</td>
+                <td>Участие в международной выставке зоотоваров</td>
+            </tr>
+        </table>
+        
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О Нас</h3>
+                    <p>Мы - команда любителей животных, которые стремятся сделать мир для животных лучше. Наша миссия - обеспечить вашего питомца всем необходимым, чтобы они были счастливы и здоровы.</p>
+                    <div class="contact">
+                        <span><a href="tel:+123456789">123-456-789</a></span>
+                        <span><a href="https://www.google.com/intl/ru/gmail/about/">HappyAnimals@gmail.com</a></span>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Мы в социальных сетях</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-form">
+                    <h3>Свяжитесь с нами</h3>
+                    <form action="#">
+                        <input type="email" name="email" class="text-input contact-input" placeholder="Your email address...">
+                        <textarea name="message" class="text-input contact-input" placeholder="Your message..."></textarea>
+                        <button type="submit" class="btn btn-big contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="burger-menu" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            var burgerMenu = document.querySelector('.burger-menu');
+
+            menu.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        }
+    </script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true, // Делаем свайпер цикличным
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            initialSlide: 1 // Устанавливаем второй слайд как начальный
+        });
+    </script>
+
+    <!-- Скрипт для графика -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Данные для графика
+        var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        var customerCounts = [150, 180, 160, 200, 220, 240, 260, 280, 290, 270, 250, 230];
+
+        // Отрисовка графика
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Количество покупателей',
+                    data: customerCounts,
+                    backgroundColor: 'rgba(243, 150, 28, 0.904)', // Цвет закрашивания
+                    borderColor: 'rgba(243, 150, 28, 1)', // Цвет рамки
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №15</title>
+    <style>
+        /* Стили для элементов страницы */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFA500;
+        }
+
+        /* Стили для кнопки "Зарегистрироваться" */
+        .open-button {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 3;
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Стили для кнопки "Проверить данные" */
+        .check-button {
+            position: fixed;
+            right: 20px;
+            top: 80px;
+            z-index: 3;
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Стили для затемнения фона */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Стили для модального окна регистрации */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #FFA500;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content {
+            width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        /* Стили для полей ввода и кнопки в модальном окне */
+        input[type="text"],
+        input[type="password"],
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px -10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: #FF4500;
+            color: white;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #FF6347;
+        }
+
+        /* Стили для отображения секретных данных */
+        #secretData {
+            display: none;
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            padding: 10px;
+            background-color: #FFA500;
+            color: white;
+            border-radius: 8px;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Лабораторная работа №15</h1>
+
+    <!-- Кнопка "Зарегистрироваться" -->
+    <button id="openRegistrationButton" class="open-button">Зарегистрироваться</button>
+
+    <!-- Кнопка "Проверить данные" -->
+    <button id="checkDataButton" class="check-button">Проверить данные</button>
+
+    <!-- Затемнение фона и окно регистрации -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="registrationModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registrationForm">
+                <label for="login">Логин:</label><br>
+                <input type="text" id="login" name="login" required><br>
+                <label for="password">Пароль:</label><br>
+                <input type="password" id="password" name="password" required><br>
+                <label for="secretWord">Секретное слово:</label><br>
+                <input type="text" id="secretWord" name="secretWord" required><br>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Элемент для отображения секретных данных -->
+    <div id="secretData"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <script>
+        // Функция для установки куки с указанным именем, значением и сроком действия в днях
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Функция для получения значения куки по имени
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Функция для удаления куки по имени
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
+
+        // Открытие окна регистрации при нажатии на кнопку "Зарегистрироваться"
+        document.getElementById("openRegistrationButton").addEventListener("click", function() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("registrationModal").style.display = "block";
+        });
+
+        // Закрытие окна регистрации при нажатии на крестик
+        document.getElementById("closeModal").addEventListener("click", function() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("registrationModal").style.display = "none";
+        });
+
+        // Закрытие окна регистрации при отправке формы
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("registrationModal").style.display = "none";
+            // Сохранение данных в куки
+            var login = document.getElementById("login").value;
+            var password = document.getElementById("password").value;
+            var secretWord = document.getElementById("secretWord").value;
+            setCookie("login", login, 2); // Куки хранятся 2 дня
+            setCookie("password", password, 2);
+            setCookie("secretWord", secretWord, 2);
+        });
+
+        // Обработка нажатия кнопки "Проверить данные"
+        document.getElementById("checkDataButton").addEventListener("click", function() {
+            var enteredSecretWord = prompt("Введите секретное слово:");
+            var storedSecretWord = getCookie("secretWord");
+            if (enteredSecretWord === storedSecretWord) {
+                var login = getCookie("login");
+                var password = getCookie("password");
+                alert("Логин: " + login + "\nПароль: " + password);
+            } else {
+                alert("Неверное секретное слово!");
+            }
+        });
+    </script>
+</body>
+</html>
